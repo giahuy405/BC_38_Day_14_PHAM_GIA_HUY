@@ -14,6 +14,7 @@
 
 <body>
   <div class="container" style="margin-bottom:500px">
+    <!-- bai 1  -->
     <div class="form-group mt-5  w-50 mx-auto">
       <h5>Bài 1 : Xuất 3 số theo thứ tự tăng dần :</h5>
       <div class="d-flex justify-content-between">
@@ -26,6 +27,7 @@
         Kết quả : <span id="arrangeNumber"></span>
       </div>
     </div>
+      <!-- bai 2  -->  
     <div class="form-group mt-5  w-25 mx-auto">
       <h5>Bài 2 : Chương trình chào hỏi:</h5>
       <!-- Nên tạo một dropdown để người dùng chọn thành viên cần gửi lời chào. Cách này sẽ hạn chế người dùng nhập sai nội
@@ -45,6 +47,7 @@
         Kết quả : <span id="greeting"></span>
       </div>
     </div>
+      <!-- bai 3  --> 
     <div class="form-group mt-5  w-50 mx-auto">
       <h5>Bài 3 : Đếm số chẵn lẻ</h5>
       <div class="form-group d-flex justify-content-around">
@@ -57,6 +60,7 @@
         Kết quả : <span id="displayCount"></span>
       </div>
     </div>
+      <!-- bai 4  -->  
     <div class="form-group mt-5  w-50 mx-auto">
       <h5> Bài 4 : Đoán hình tam giác </h5>
       <!-- 📝Note: Chỉ cần xác định các loại tam giác cơ bản (vuông, đều, cân), các tam giác còn lại xếp loại là tam giác
@@ -79,7 +83,7 @@
       <div class="alert alert-success mt-3">
         Kết quả : <span id="displayTriangle"></span></div>
     </div>
-
+      <!-- bai 5  sai -->
     <div class="form-group mt-5  w-50 mx-auto">
       <h5> Bài 5 : Tính ngày tháng năm ( sai ) </h5>
       <!-- Mở rộng để xem thêm
@@ -115,9 +119,85 @@
       <div class="alert alert-success mt-3">
         Kết quả : <span id="displayDay"></span></div>
     </div>
+      <!-- bai 6  -->  
+    <div class="form-group mt-5  w-50 mx-auto">
+      <h5> Bài 6 : Tính ngày tháng năm </h5>
+      <!-- Mở rộng để xem thêm
+      Form nhập thông tin có thể tạo bằng input loại number, dropwdown hoặc input loại date đều được
+      Đối với các tháng 1,3,5,7,8,10,12 sẽ có 31 ngày
+      Đối với các tháng 4,6,9,11 sẽ có 30 ngày
+      Đối với tháng 2, nếu là năm nhuận sẽ có 29 ngày. Ngược lại là 28 ngày.
+      Cách kiểm tra năm nhuận:
+      Những năm chia hết cho 4 và không chia hết cho 100 (VD: 2012, 2016, 2020) ,hoặc những năm chia hết cho 400 (VD: 1600, 1200) -->
+      <div class="form-group d-flex justify-content-around">
+        <input type="number" class="form-control w-25" id="month2" placeholder="Nhập tháng">
+        <input type="number" class="form-control w-25" id="year2" placeholder="Nhập năm">
+      </div>
+      <button class="btn btn-primary" onclick="calDay2()">Tính ngày</button>
+
+      <div class="alert alert-success mt-3">
+        Kết quả : <span id="displayDay2"></span></div>
+    </div>
+      <!-- bai 7 -->
+    <div class="form-group mt-5  w-50 mx-auto">
+      <h5> Bài 7 : Đọc số </h5>
+      <!-- Nhập số 123 sẽ đọc thành một trăm hai mươi ba
+      Sử dụng cách lấy từng số hàng trăm, hàng chục, hàng đơn vị. Dùng kiến thức lấy phần dư (%), lấy phần nguyên
+      Math.floor() của phép chia /
+      Sử dụng if...else if...else hoặc switch case để xử lý cách đọc số. -->
+      <div class="form-group d-flex justify-content-around">
+        <input type="number" class="form-control w-50" id="numberThreeDigit" placeholder="Nhập số 3 chữ số">
+      </div>
+      <button class="btn btn-primary" onclick="readNumber()">Đọc số</button>
+
+      <div class="alert alert-success mt-3">
+        Kết quả : <span id="displayReadNumber"></span></div>
+    </div>
+      <!-- bai 8  -->
+    <div class="form-group mt-5  w-50 mx-auto">
+      <h5> Bài 8 : Tìm sinh viên xa trường nhất </h5>
+      <!-- 📝 Giả sử các sinh viên ở các địa điểm khác nhau không ở chung.
+      Chỉ cần tính quãng đường theo tọa độ 2 đầu của 1 đoạn thẳng trên mặt phẳng
+      💡Gợi ý:
+      Mở rộng để xem thêm
+      Áp dụng cách tính đoạn thẳng theo tọa độ
+      d là độ dài đoạn đường. (x1, y1) là tọa độ điểm đầu (toạ độ nhà sinh viên). (x2, y2) là tọa độ điểm cuối (toạ độ
+      ngôi trường)
+      d = sqrt( (x2-x1)*(x2-x1) + (y2-y1)*(y2-y1) )
+      Sử dụng if...else if...else để so sánh độ dài các đoạn đường. Sau khi xác định được đoạn đường dài nhất thì thông
+      báo tên sinh viên -->
+      <h5>Sinh viên 1</h5>
+      <div class="form-group  d-flex justify-content-between ">
+        <input type="text" class="form-control w-25" id="student1" placeholder="Nhập tên">
+        <input type="number" class="form-control w-25" id="coordinateX1" placeholder="Nhập tọa độ x">
+        <input type="number" class="form-control w-25" id="coordinateY1" placeholder="Nhập  tọa độ y">
+      </div>
+      <h5>Sinh viên 2</h5>
+      <div class="form-group  d-flex justify-content-between mt-1">
+        <input type="text" class="form-control w-25" id="student2" placeholder="Nhập tên">
+        <input type="number" class="form-control w-25" id="coordinateX2" placeholder="Nhập tọa độ x">
+        <input type="number" class="form-control w-25" id="coordinateY2" placeholder="Nhập  tọa độ y">
+      </div>
+      <h5>Sinh viên 3</h5>
+      <div class="form-group  d-flex justify-content-between mt-1">
+        <input type="text" class="form-control w-25" id="student3" placeholder="Nhập tên">
+        <input type="number" class="form-control w-25" id="coordinateX3" placeholder="Nhập tọa độ x">
+        <input type="number" class="form-control w-25" id="coordinateY3" placeholder="Nhập  tọa độ y">
+      </div>
+      <h5>Trường học</h5>
+      <div class="form-group  d-flex justify-content-between mt-1">
+        <input type="number" class="form-control w-25" id="coordinateX" placeholder="Nhập tọa độ x">
+        <input type="number" class="form-control w-25" id="coordinateY" placeholder="Nhập  tọa độ y">
+        <input type="number" class="form-control w-25" style="opacity: 0">
+      </div>
+      <button class="btn btn-primary" onclick="find()">Tìm</button>
+  
+      <div class="alert alert-success mt-3">
+        Kết quả : <span id="displayStudent"></span></div>
+    </div>
   </div>
-
-
+  
+  </div>
 
 
 

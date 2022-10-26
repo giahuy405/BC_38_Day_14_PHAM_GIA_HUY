@@ -167,7 +167,7 @@ btnYesterday.onclick = function () {
             case 12:
                 {
                     if (day > 0 && day <= 31) {
-                       
+
                         break;
                     }
                     else {
@@ -210,9 +210,180 @@ btnYesterday.onclick = function () {
 
 }
 
+//  bài 6 
+var displayDay2 = document.getElementById('displayDay2');
+function calDay2() {
+    // nhân với 1 để ép kiểu thành số vì mặc định nó là chuỗi
+    var month2 = document.getElementById('month2').value * 1;
+    var year2 = document.getElementById('year2').value * 1;
+
+    if (year2 < 1920) {
+        alert('Năm cần lớn hơn 1920')
+    }
+    switch (month2) {
+        case 1:
+        case 3:
+        case 5:
+        case 7:
+        case 8:
+        case 10:
+        case 12:
+            displayDay2.innerHTML = 'Tháng ' + month2 + ' năm ' + year2 + ' có 31 ngày';
+            break;
+        case 4:
+        case 6:
+        case 9:
+        case 11:
+            displayDay2.innerHTML = 'Tháng ' + month2 + ' năm ' + year2 + ' có 30 ngày';
+            break;
+        case 2:
+            {
+                if (year2 % 4 === 0 && year2 % 100 !== 0 || year2 % 400 === 0) {
+                    displayDay2.innerHTML = 'Tháng ' + month2 + ' năm ' + year2 + ' có 29 ngày';
+                }
+                else {
+                    displayDay2.innerHTML = 'Tháng ' + month2 + ' năm ' + year2 + ' có 28 ngày';
+                }
+                break;
+            }
+        default:
+            alert('Dữ liệu không hợp lệ')
+    }
+}
+
+// bài 7 
+function readNumber() {
+    var displayReadNumber = document.getElementById('displayReadNumber');
+    var numberThreeDigit = document.getElementById('numberThreeDigit').value * 1;
 
 
+    var firstDigit = Math.floor(numberThreeDigit / 100);
+    var secondDigit = Math.floor((numberThreeDigit / 10) % 10);
+    var thirdDigit = Math.floor(numberThreeDigit % 10);
+
+    switch (firstDigit) {
+        case 1:
+            firstDigit = 'Một trăm';
+            break;
+        case 2:
+            firstDigit = 'Hai trăm';
+            break;
+        case 3:
+            firstDigit = 'Ba trăm';
+            break;
+        case 4:
+            firstDigit = 'Bốn trăm';
+            break;
+        case 5:
+            firstDigit = 'Năm trăm';
+            break;
+        case 6:
+            firstDigit = 'Sáu trăm';
+            break;
+        case 7:
+            firstDigit = 'Bảy trăm';
+            break;
+        case 8:
+            firstDigit = 'Tám trăm';
+            break;
+        default:
+            firstDigit = 'Chín trăm';
 
 
+    }
+    switch (secondDigit) {
+        case 1:
+            secondDigit = ' Mười';
+            break;
+        case 2:
+            secondDigit = ' Hai Mươi';
+            break;
+        case 3:
+            secondDigit = ' Ba Mươi';
+            break;
+        case 4:
+            secondDigit = ' Bốn Mươi';
+            break;
+        case 5:
+            secondDigit = ' Năm Mươi';
+            break;
+        case 6:
+            secondDigit = ' Sáu Mươi';
+            break;
+        case 7:
+            secondDigit = ' Bảy Mươi';
+            break;
+        case 8:
+            secondDigit = ' Tám Mươi';
+            break;
+        default:
+            secondDigit = ' Chín Mươi';
 
+    }
+    switch (thirdDigit) {
+        case 1:
+            thirdDigit = ' Một';
+            break;
+        case 2:
+            thirdDigit = ' Hai';
+            break;
+        case 3:
+            thirdDigit = ' Ba';
+            break;
+        case 4:
+            thirdDigit = ' Bốn';
+            break;
+        case 5:
+            thirdDigit = ' Năm';
+            break;
+        case 6:
+            thirdDigit = ' Sáu';
+            break;
+        case 7:
+            thirdDigit = ' Bảy';
+            break;
+        case 8:
+            thirdDigit = ' Tám';
+            break;
+        default:
+            thirdDigit = ' Chín';
 
+    }
+    if (numberThreeDigit < 99 || numberThreeDigit > 999) {
+        alert('Vui lòng nhập số 3 chữ số');
+    } else {
+        displayReadNumber.innerHTML = firstDigit + secondDigit + thirdDigit;
+    }
+
+}
+
+// bài 8
+function find() {
+   
+    var student1 = document.getElementById('student1').value;
+    var student2 = document.getElementById('student2').value;
+    var student3 = document.getElementById('student3').value;
+
+    var displayStudent=document.getElementById('displayStudent');
+
+    var coordinateX1 = document.getElementById('coordinateX1').value * 1;
+    var coordinateX2 = document.getElementById('coordinateX2').value * 1;
+    var coordinateX3 = document.getElementById('coordinateX3').value * 1;
+    var coordinateX = document.getElementById('coordinateX').value * 1;
+
+    var coordinateY1 = document.getElementById('coordinateY1').value * 1;
+    var coordinateY2 = document.getElementById('coordinateY2').value * 1;
+    var coordinateY3 = document.getElementById('coordinateY3').value * 1;
+    var coordinateY = document.getElementById('coordinateY').value * 1;
+    var d1 = Math.sqrt(Math.pow(coordinateX - coordinateX1, 2) + Math.pow(coordinateY - coordinateY1, 2));
+    var d2 = Math.sqrt(Math.pow(coordinateX - coordinateX2, 2) + Math.pow(coordinateY - coordinateY2, 2));
+    var d3 = Math.sqrt(Math.pow(coordinateX - coordinateX3, 2) + Math.pow(coordinateY - coordinateY3, 2));
+    if(d1>=d2 && d1>=d3){
+        displayStudent.innerHTML=student1 + ' là sinh viên xa trường nhất';
+    }else if(d2>=d3 && d2>=d1){
+        displayStudent.innerHTML=student2 + ' là sinh viên xa trường nhất';
+    }else{
+        displayStudent.innerHTML=student3 + ' là sinh viên xa trường nhất';
+    }
+
+}
