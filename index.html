@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Bài tập if else</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="container" style="margin-bottom:500px">
+    <div class="form-group mt-5  w-50 mx-auto">
+      <h5>Bài 1 : Xuất 3 số theo thứ tự tăng dần :</h5>
+      <div class="d-flex justify-content-between">
+        <input type="text" class="form-control w-25" id="number1" placeholder="Nhập số thứ 1">
+        <input type="text" class="form-control w-25" id="number2" placeholder="Nhập số thứ 2">
+        <input type="text" class="form-control w-25" id="number3" placeholder="Nhập số thứ 3">
+      </div>
+      <button id="btnArrange" class="mt-3 btn btn-success">Sắp xếp</button>
+      <div class="alert alert-success mt-3">
+        Kết quả : <span id="arrangeNumber"></span>
+      </div>
+    </div>
+    <div class="form-group mt-5  w-25 mx-auto">
+      <h5>Bài 2 : Chương trình chào hỏi:</h5>
+      <!-- Nên tạo một dropdown để người dùng chọn thành viên cần gửi lời chào. Cách này sẽ hạn chế người dùng nhập sai nội
+      dung.
+      Mỗi thẻ option nên thêm value để dễ xử lý data sau khi lấy từ form.
+      Nên sử dụng câu điều kiện if...else if... else. Hoặc dùng switch case -->
+      <!-- thêm multiple vào select là có thể chọn nhiều selected -->
+      <select class="form-control" name="" id="hello">
+        <option value="">Chọn thành viên</option>
+        <option value="father" selected>Bố</option>
+        <option value="mother">Mẹ</option>
+        <option value="brother">Anh trai</option>
+        <option value="sister">Em gái</option>
+      </select>
+      <button class="btn-hello mt-3 btn btn-primary" id="btnHello">Gửi lời chào</button>
+      <div class="alert alert-primary mt-3">
+        Kết quả : <span id="greeting"></span>
+      </div>
+    </div>
+    <div class="form-group mt-5  w-50 mx-auto">
+      <h5>Bài 3 : Đếm số chẵn lẻ</h5>
+      <div class="form-group d-flex justify-content-around">
+        <input type="text" class="form-control w-25" id="count1" placeholder="Nhập số thứ 1">
+        <input type="text" class="form-control w-25" id="count2" placeholder="Nhập số thứ 2">
+        <input type="text" class="form-control w-25" id="count3" placeholder="Nhập số thứ 3">
+      </div>
+      <div class="text-center"><button class="btn btn-success px-5" id="btnCount">Đếm</button></div>
+      <div class="alert alert-success mt-3">
+        Kết quả : <span id="displayCount"></span>
+      </div>
+    </div>
+    <div class="form-group mt-5  w-50 mx-auto">
+      <h5> Bài 4 : Đoán hình tam giác </h5>
+      <!-- 📝Note: Chỉ cần xác định các loại tam giác cơ bản (vuông, đều, cân), các tam giác còn lại xếp loại là tam giác
+      khác
+      💡Gợi ý:
+      Cách xác định loại tam giác (mở rộng để xem thêm)
+      Ép kiểu dữ liệu của các cạnh sang kiểu số để xử lý vì các giá trị nhận được từ form mặc định sẽ ở kiểu chuỗi.
+      Kiểm tra 3 cạnh là của tam giác:
+      Ba cạnh a, b, c của một tam giác phải thỏa mãn điều kiện là tổng hai cạnh bất kỳ luôn lớn hơn cạnh còn lại. Tức là
+      a+b>c và a+c>b và b+c>a.
+      Tam giác đều nếu 3 cạnh bằng nhau. Vd:a = 3, b=3 c=3
+      Tam giác cân nếu 2 cạnh bằng nhau. Vd: a=2, b=2, c=1
+      Tam giác vuông nếu: c^2 = a^2 + b^2. Vd: a=3, b=4, c=5 -->
+      <div class="form-group d-flex justify-content-around">
+        <input type="text" class="form-control w-25" id="edge1" placeholder="Nhập cạnh 1">
+        <input type="text" class="form-control w-25" id="edge2" placeholder="Nhập cạnh 2">
+        <input type="text" class="form-control w-25" id="edge3" placeholder="Nhập cạnh 3">
+      </div>
+      <button class="btn btn-primary" id="guessTriangle">Dự đoán</button>
+      <div class="alert alert-success mt-3">
+        Kết quả : <span id="displayTriangle"></span></div>
+    </div>
+
+    <div class="form-group mt-5  w-50 mx-auto">
+      <h5> Bài 5 : Tính ngày tháng năm ( sai ) </h5>
+      <!-- Mở rộng để xem thêm
+      Form nhập thông tin có thể tạo bằng input loại number, dropwdown hoặc input loại date đều được
+      Đối với tháng 2, nếu là năm nhuận sẽ có 29 ngày. Ngược lại là 28 ngày.
+      Cách kiểm tra năm nhuận:
+      Những năm chia hết cho 4 và không chia hết cho 100 (VD: 2012, 2016, 2020) ,hoặc những năm chia hết cho 400 (VD:
+      1600, 1200)
+      Khi người dùng chọn Ngày Mai thì chỉ cần tăng giá trị ngày lên 1. Ngược lại, chọn Ngày Hôm Qua thì trừ đi 1.
+      Kiểm tra các trường hợp ngày đầu tháng:
+      Nếu ngày nhập vào là ngày 1 của các tháng 5,7,10,12 thì Ngày Hôm Qua là ngày 30 của tháng trước. VD: 1/12 =>
+      30/11.
+      Nếu ngày nhập vào là ngày 1 của các tháng 1,2,4,6,8,9,11 thì Ngày Hôm Qua là ngày 31 của tháng trước. VD: 1/2 =>
+      31/1.
+      Nếu ngày nhập vào là ngày 1 của tháng 3 và là năm nhuận thì Ngày Hôm Qua là 29/2.
+      Ngược lại, không phải năm nhuận thì Ngày Hôm Qua là 28/2
+      Kiểm tra các trường hợp ngày cuối tháng:
+      Nếu ngày nhập vào là ngày 31 của các tháng 1,3,5,7,8,10,12 thì Ngày Mai là ngày 1 của tháng kế tiếp. VD: 31/1 =>
+      1/2.
+      Nếu ngày nhập vào là ngày 30 của các tháng 4,6,9,11 thì Ngày Mai là ngày 1 của tháng kế tiếp. VD: 30/4 => 1/5.
+      Nếu là tháng 2 và năm nhuận thì ngày mai của ngày 29/2 mới là 1/3
+      Nếu là tháng 2 và năm không nhuận thì ngày mai của ngày 28/2 mới là 1/3
+      Kiểm tra các trường hợp ngày đầu và cuối năm:
+      Nếu ngày đầu năm thì ngày hôm qua là ngày 31/12 của năm cũ.VD: 1/1/2023 => 31/12/2022
+      Nếu ngày cuối năm thì ngày mai sẽ là 1/1 của năm mới. VD: 31/12/2022 => 1/1/2023 -->
+      <div class="form-group d-flex justify-content-around">
+        <input type="number" class="form-control w-25" id="day" placeholder="Nhập ngày">
+        <input type="number" class="form-control w-25" id="month" placeholder="Nhập tháng">
+        <input type="number" class="form-control w-25" id="year" placeholder="Nhập năm">
+      </div>
+      <button class="btn btn-primary" id="btnYesterday">Ngày hôm qua</button>
+      <button class="btn btn-primary" id="btnTomorrow">Ngày mai</button>
+      <div class="alert alert-success mt-3">
+        Kết quả : <span id="displayDay"></span></div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="./index.js"></script>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
