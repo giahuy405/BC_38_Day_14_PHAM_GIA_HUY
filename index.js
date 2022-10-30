@@ -139,7 +139,7 @@ guessTriangle.onclick = function () {
 
 }
 
-// ngày tháng năm 
+// bài 5  ngày tháng năm 
 
 
 btnYesterday.onclick = function () {
@@ -150,13 +150,149 @@ btnYesterday.onclick = function () {
     var month = document.getElementById('month').value * 1;
     var year = document.getElementById('year').value * 1;
 
-    var btnYesterday = document.getElementById('btnYesterday');
-    var btnTomorrow = document.getElementById('btnTomorrow');
+    var namNhuan = true;
     var displayDay = document.getElementById('displayDay');
-    if (day <= 0 || month <= 0 || year <= 0) {
-        alert('Hãy nhập số dương ')
+    //kiểm tra năm nhuận
+    if (month === 2) {
+        if (year % 4 === 0 && year % 100 !== 0 || year % 400 === 0) {
+            namNhuan = true;
+        }
+        else {
+            namNhuan = false;
+        }
     }
+
+    // kiểm tra số thập phân *
+    // kiểm tra tính hợp lệ ngày, tháng, năm
+    switch (month) {
+        case 1:
+        case 3:
+        case 5:
+        case 7:
+        case 8:
+        case 10:
+        case 12:
+            if (day < 0 || day > 31) alert('Nhập sai ngày1')
+            break;
+        case 4:
+        case 6:
+        case 9:
+        case 11:
+            if (day < 0 || day > 30) alert('Nhập sai ngày2')
+            break;
+        case 2:
+            if (namNhuan === true && day !== 29) alert('Nhập sai ngày3')
+            else if (day < 0 || day > 29) alert('Nhập sai ngày4')
+            break;
+        default:
+            alert('nhập dữ liệu ko hợp lệ');
+            return;
+    }
+    if (year < 1921) {
+        alert('Nhập năm cần lớn hơn 1920');
+    }
+
+    // kiểm tra ngày đầu tháng 
+    if (day === 1) {
+        switch (month) {
+            case 5:
+            case 7:
+            case 10:
+            case 12:
+                day = 30; month = month - 1;
+                break;
+            case 1:
+                day = 31; month = 12; year = year - 1;
+                break;
+            case 2:
+            case 4:
+            case 6:
+            case 8:
+            case 9:
+            case 11:
+                day = 31;
+                month = month - 1;
+                break;
+            case 3:
+                if (namNhuan === true) day = 29;
+                else day = 28;
+                month = 2;
+                break;
+        }
+    } else {
+        day = day - 1;
+    }
+
+    // 09/09 
+    if (day < 10 && month < 10) {
+        displayDay.innerHTML = '0' + day + '/' + '0' + month + '/' + year;
+    }
+    // 09/10
+    else if (day < 10 && month > 9) {
+        displayDay.innerHTML = '0' + day + '/' + month + '/' + year;
+    }
+    // 10/09
+    else if (day > 9 && month < 10) {
+        displayDay.innerHTML = day + '/' + '0' + month + '/' + year;
+    }
+    // 10/10
     else {
+        displayDay.innerHTML = day + '/' + month + '/' + year;
+    }
+}
+
+btnTomorrow.onclick = function () {
+    // nhân với 1 để ép kiểu từ string sang number 
+    // hoặc dùng parseInt(document.getElementById('day').value) 
+    // hoặc dùng parseFloat() nếu là số thực, Number() lên google tìm hiểu thêm
+    var day = document.getElementById('day').value * 1;
+    var month = document.getElementById('month').value * 1;
+    var year = document.getElementById('year').value * 1;
+
+    var namNhuan = true;
+    var displayDay = document.getElementById('displayDay');
+    //kiểm tra năm nhuận
+    if (month === 2) {
+        if (year % 4 === 0 && year % 100 !== 0 || year % 400 === 0) {
+            namNhuan = true;
+        }
+        else {
+            namNhuan = false;
+        }
+    }
+
+    // kiểm tra số thập phân *
+    // kiểm tra tính hợp lệ ngày, tháng, năm
+    switch (month) {
+        case 1:
+        case 3:
+        case 5:
+        case 7:
+        case 8:
+        case 10:
+        case 12:
+            if (day < 0 || day > 31) alert('Nhập sai ngày')
+            break;
+        case 4:
+        case 6:
+        case 9:
+        case 11:
+            if (day < 0 || day > 30) alert('Nhập sai ngày')
+            break;
+        case 2:
+            if (namNhuan === true && day !== 29) alert('Nhập sai ngày')
+            else if (day < 0 || day > 29) alert('Nhập sai ngày4')
+            break;
+        default:
+            alert('nhập dữ liệu ko hợp lệ');
+            return;
+    }
+    if (year < 1921) {
+        alert('Nhập năm cần lớn hơn 1920');
+    }
+
+    // kiểm tra ngày cuối tháng 
+    if (day === 31) {
         switch (month) {
             case 1:
             case 3:
@@ -164,51 +300,55 @@ btnYesterday.onclick = function () {
             case 7:
             case 8:
             case 10:
+                day ++;
+                month ++;
+                break;
             case 12:
-                {
-                    if (day > 0 && day <= 31) {
-
-                        break;
-                    }
-                    else {
-                        alert('Nhập ngày không hợp lệ');
-                        break;
-                    }
-                }
+                day ++ ; month = 1;year++;
+                break;
+        }
+    }
+    else if (day === 30) {
+        switch (month) {
             case 4:
             case 6:
             case 9:
             case 11:
-                {
-                    if (day > 0 && day <= 30) {
-
-                        break;
-                    }
-                    else {
-                        alert('Nhập ngày không hợp lệ');
-                        break;
-                    }
-                }
-            case 2:
-                {
-                    if (day > 0 && day <= 28) {
-
-                        break;
-                    }
-                    else {
-                        alert('Nhập ngày không hợp lệ');
-                        break;
-                    }
-                }
-            default:
-                {
-                    alert('Không hợp lệ nha');
-
-                }
+                day ++ ; month ++ ;
+                break;
         }
     }
-
+    else if ( month === 2) {
+        if (namNhuan === true && day === 29){
+            day=1
+        }
+        else if (namNhuan === true && day !== 28) alert('Nhập sai ngày')
+    }
+    else{
+        day++;
+    }
+     // 09/09 
+     if (day < 10 && month < 10) {
+        displayDay.innerHTML = '0' + day + '/' + '0' + month + '/' + year;
+    }
+    // 09/10
+    else if (day < 10 && month > 9) {
+        displayDay.innerHTML = '0' + day + '/' + month + '/' + year;
+    }
+    // 10/09
+    else if (day > 9 && month < 10) {
+        displayDay.innerHTML = day + '/' + '0' + month + '/' + year;
+    }
+    // 10/10
+    else {
+        displayDay.innerHTML = day + '/' + month + '/' + year;
+    }
+   
 }
+
+
+
+
 
 //  bài 6 
 var displayDay2 = document.getElementById('displayDay2');
@@ -359,12 +499,12 @@ function readNumber() {
 
 // bài 8
 function find() {
-   
+
     var student1 = document.getElementById('student1').value;
     var student2 = document.getElementById('student2').value;
     var student3 = document.getElementById('student3').value;
 
-    var displayStudent=document.getElementById('displayStudent');
+    var displayStudent = document.getElementById('displayStudent');
 
     var coordinateX1 = document.getElementById('coordinateX1').value * 1;
     var coordinateX2 = document.getElementById('coordinateX2').value * 1;
@@ -378,12 +518,12 @@ function find() {
     var d1 = Math.sqrt(Math.pow(coordinateX - coordinateX1, 2) + Math.pow(coordinateY - coordinateY1, 2));
     var d2 = Math.sqrt(Math.pow(coordinateX - coordinateX2, 2) + Math.pow(coordinateY - coordinateY2, 2));
     var d3 = Math.sqrt(Math.pow(coordinateX - coordinateX3, 2) + Math.pow(coordinateY - coordinateY3, 2));
-    if(d1>=d2 && d1>=d3){
-        displayStudent.innerHTML=student1 + ' là sinh viên xa trường nhất';
-    }else if(d2>=d3 && d2>=d1){
-        displayStudent.innerHTML=student2 + ' là sinh viên xa trường nhất';
-    }else{
-        displayStudent.innerHTML=student3 + ' là sinh viên xa trường nhất';
+    if (d1 >= d2 && d1 >= d3) {
+        displayStudent.innerHTML = student1 + ' là sinh viên xa trường nhất';
+    } else if (d2 >= d3 && d2 >= d1) {
+        displayStudent.innerHTML = student2 + ' là sinh viên xa trường nhất';
+    } else {
+        displayStudent.innerHTML = student3 + ' là sinh viên xa trường nhất';
     }
 
 }
