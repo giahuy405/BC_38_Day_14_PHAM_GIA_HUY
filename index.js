@@ -181,8 +181,8 @@ btnYesterday.onclick = function () {
             if (day < 0 || day > 30) alert('Nhập sai ngày2')
             break;
         case 2:
-            if (namNhuan === true && day !== 29) alert('Nhập sai ngày3')
-            else if (day < 0 || day > 29) alert('Nhập sai ngày4')
+            if (namNhuan === true && (day < 0 || day > 29)  ) alert('Nhập sai ngày')
+            else if ( namNhuan === false && (day < 0 || day > 28)) alert('Nhập sai ngày4')
             break;
         default:
             alert('nhập dữ liệu ko hợp lệ');
@@ -271,17 +271,17 @@ btnTomorrow.onclick = function () {
         case 8:
         case 10:
         case 12:
-            if (day < 0 || day > 31) alert('Nhập sai ngày')
+            if (day < 0 || day > 31) alert('Nhập sai ngày1')
             break;
         case 4:
         case 6:
         case 9:
         case 11:
-            if (day < 0 || day > 30) alert('Nhập sai ngày')
+            if (day < 0 || day > 30) alert('Nhập sai ngày2')
             break;
         case 2:
-            if (namNhuan === true && day !== 29) alert('Nhập sai ngày')
-            else if (day < 0 || day > 29) alert('Nhập sai ngày4')
+            if (namNhuan === true && (day < 0 || day > 29)  ) alert('Nhập sai ngày3')
+            else if ( namNhuan === false && (day < 0 || day > 28)) alert('Nhập sai ngày4')
             break;
         default:
             alert('nhập dữ liệu ko hợp lệ');
@@ -300,11 +300,11 @@ btnTomorrow.onclick = function () {
             case 7:
             case 8:
             case 10:
-                day ++;
-                month ++;
+                day++;
+                month++;
                 break;
             case 12:
-                day ++ ; month = 1;year++;
+                day++; month = 1; year++;
                 break;
         }
     }
@@ -314,21 +314,22 @@ btnTomorrow.onclick = function () {
             case 6:
             case 9:
             case 11:
-                day ++ ; month ++ ;
+                day++; month++;
                 break;
         }
     }
-    else if ( month === 2) {
-        if (namNhuan === true && day === 29){
-            day=1
+    else if (month === 2) {
+        if (namNhuan === true && day === 29) {
+            day = 1
+        }else{
+            day++;
         }
-        else if (namNhuan === true && day !== 28) alert('Nhập sai ngày')
     }
-    else{
+    else {
         day++;
     }
-     // 09/09 
-     if (day < 10 && month < 10) {
+    // 09/09 
+    if (day < 10 && month < 10) {
         displayDay.innerHTML = '0' + day + '/' + '0' + month + '/' + year;
     }
     // 09/10
@@ -343,7 +344,7 @@ btnTomorrow.onclick = function () {
     else {
         displayDay.innerHTML = day + '/' + month + '/' + year;
     }
-   
+
 }
 
 
